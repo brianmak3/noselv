@@ -1,0 +1,54 @@
+<div class="col-lg-offset-7 col-md-offset-8 col-sm-offset-7 hidden-xs " style="position:fixed;top:40px;  height:450px;border-radius:2px; width:330px">
+    <div id="search_results" style="display:none;width:320px;background-color: white;position:absolute;margin-top:-9px;">
+        <span style="font-size: 12px;color:grey;font-weight:bold">Search results found: </span>
+        <div id="results_found" style="height:auto;max-height:180px;padding:2px;padding-top:5px;padding-bottom:10px;overflow: hidden;overflow-y: auto">
+        </div>
+    </div>
+    <div style="border-radius:1px;padding:3px;background-color: #000034; width:100%;">
+        <span class="menu_icons" style="font-weight:lighter;   margin-left:10px;">Chat</span>
+        <span class="menu_icons" style="font-weight:lighter;  margin-left:20px;">Friends</span>
+        <input placeholder= " Search" type="text" style="color:white;background-color:#000034;width:180px; border: none; border-bottom:1px solid white;height:25px;top:13px; margin-left:5px">
+        <i class="glyphicon glyphicon-search" style="color: white; margin-top:5px; margin-left:5px;position:static" ></i>
+    </div>
+    <div  style="background-image: url(images/chat1.png);width:100%;">
+
+        <div style="background-color: rgba(0,0,0,0.1);height:380px;overflow: hidden; overflow-y: auto ">
+            <%for(i=0; i<=20; i++){%>
+            <div style="border-bottom: 1px solid #DCDCDC;display:inline-block; width:100%">
+                <img src="images/bigAvatar.jpg" style="margin:5px;height:40px; width:40px; border-radius:50%">
+                <div style="display:inline-block;font-weight:bold;font-size:12px;">
+                    <span style="color: #000034;">Brian Henry</span><br/><br/>
+                    <span style="font-size: 11px; font-weight:lighter">Life is better with noSelv.</span>
+                </div>
+            </div>
+            <%}%>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="col-lg-offset-7 col-md-offset-8 col-sm-offset-7 hidden-xs " style="position:fixed;top:470px;font-size:12px; font-weight:bold;background-color:#F8F8F8;height:auto;max-height:135px;border-radius:2px; width:335px">
+    <span style="margin-left:5px;font-size:10px" id="friend_maker" value="<%= user.user_name %>"><i class="fa fa-users"></i> Make friends</span><br/>
+    <div style="padding:3px; background-color: white;overflow:hidden;overflow-x: auto; width:330px; margin:2px">
+        <div id="make_friends" style="height:auto;max-height:110px; overflow: hidden; overflow-y: auto">
+            <% users_found.forEach(function(users){if( user.user_name != users.user_name ){%>
+            <div id="<%= users.user_name %>"  class="person_div"  >
+                <form action="friend_profile" method="post">
+                <button type="submit" name="username" value="<%= users.user_name %>" class="name_btn"><%= users.first_name + ' '+users.last_name %></button>
+                </form>
+                <img  src="<%= users.profile_pic %>" style="cursor:pointer;margin-bottom:1px;border-radius:2px;height:100px; width:100px;">
+                <div value="<%= users.user_name %>" class="person_image">
+                    <span style="color:white;font-size: 17px;position:relative;top:30px;left:20px">follow</span>
+                </div>
+            </div>
+
+            <%}})%>
+        </div>
+    </div>
+</div>
+<div class="col-lg-offset-7 col-md-offset-8 col-sm-offset-7 hidden-xs " style="position:fixed;top:610px;font-size:10px;color:grey;height:60px;border-radius:2px; width:330px">
+    <span><a>Privacy</a>.<a>Terms</a></span>
+    <span style="margin-left:150px">noSelv <i class="fa fa-copyright"></i> 2017</span><br/>
+</div>
+    

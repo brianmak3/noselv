@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <% include headers/bootstrap_js.ejs %>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#post_form').submit(function() {
+                if (labels.length < 1) {
+                    $('#labels_warning').show("easeOutBounce").text('You need at least 1 label.');
+                    return false;
+                }else {
+                   // $("#status").empty().text("File is uploading...");
+                    $(this).ajaxSubmit({
+
+                        error: function (xhr) {
+                           // status('Error: ' + xhr.status);
+                        },
+
+                        success: function (response) {
+                         //   $("#status").empty().text(response);
+                            console.log(response);
+                        }
+                    });
+                    //Very important line, it disable the page refresh.
+                    return false;
+                }
+            });
+            var getNode = function (s){
+                    return document.querySelector(s);
+                },
+                //get required nodes
+                labels_input = getNode('#labels_input');
+
+            try{
+                var socket = io.connect('http://127.0.0.1:8080');
+            }catch(e){
+                // set status to warn
+            }if(socket ==''){
+                alert('undefined connection');
+            }
+
+                $('.update_file').mouseenter(function(){
+                $('.update_pic').css({'color': 'white', 'backgroundColor':'#000034'});
+            }).mouseleave(function(){
+                $('.update_pic').css({'color': '#000034', 'backgroundColor':'white'});
+            });
+            var imageLoader = document.getElementById('filePhoto');
+            imageLoader.addEventListener('change', handleImage, false);
+
+            function handleImage(e) {
+                var reader = new FileReader();
+                reader.onload = function (event) {
+                    $('.uploader img').attr('src',event.target.result);
+                }
+                reader.readAsDataURL(e.target.files[0]);
+            }
+            var labels = [];
+           labels_input.addEventListener('keyup',function(){
+               $('#labels_warning').hide("easeOutBounce");
+                    var label = jQuery.trim($(this).val());
+                   if(label !=''){
+                       $('#labels_btn').attr('disabled',false).css({'color':'#000034','backgroundColor':'lightgrey'});
+                   }else{
+                       $('#labels_btn').attr('disabled',true).css({'color':'grey','backgroundColor':'white'});
+                   }
+            });
+            $('#labels_btn').on({
+                click: function (e) {
+                    e.preventDefault;
+                    var label = jQuery.trim($('#labels_input').val()).toLowerCase();
+                    if (labels.length <= 2) {
+                        if (labels.indexOf(label) == -1) {
+                            labels.push(label);
+
+                            $('#labels_input').val('');
+                            $('#labels').append('<button class="labelBtn" type="button" style="margin:2px;border:none; border-radius:2px; background-color: #E8E8E8">' + label + ' <span class="x_label" > x</span></button>');
+                        } else {
+                            $('#labels_warning').show("easeOutBounce").text('That label already exists in your list');
+                        }
+                    } else {
+                        $('#labels_warning').show("easeOutBounce").text('Maximum labels required are 3');
+                    }
+                    $('.labelBtn').click(function (e) {
+                        e.preventDefault;
+                        var clicked = $(this).text().split(" ");
+                        var labelx = clicked[0];
+                       labels =  $(labels).not([labelx]).get();
+                        $(this).remove();
+                    });
+
+
+                }});
+
+
+
+        });
+
+    </script>
+</head>
+<body style="padding:0px; background-color: rgba(229,229,242, 0.9);">
+<% include headers/main_header.ejs %>
+<div class="fullheight" style="height: auto; overflow: hidden; overflow-y:auto; margin:0px;margin:0px;width:100%">
+    <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-1" style="height:auto; width:440px; margin-top:49px;">
+        <div style="background-color: white; border-radius:2px; padding: 5px">
+            <img src="<%= user.profile_pic%>" style="border-radius:2px;height:30px; width:30px;">
+            <span style="font-weight: bold; color:#000034"><%= user.first_name +' '+ user.last_name %></span>
+            <span  style="font-weight: bold; color:grey; font-size:12px; float:right">Uploading new image.</span><br/>
+            <form id="post_form" enctype="multipart/form-data" action="uploaded_post" method="post">
+                <div class="uploader" onclick="$('#filePhoto').click()">
+                    <i style="color:#E0E0E0;position:relative;font-size:30px; top:70px;left:200px" class="fa fa-camera"></i><br/>
+                    <span style="position:relative;font-size:30px; top:85px;padding:5px; color:#E0E0E0; left:65px; border:1px grey dashed">Drag your image here.</span>
+                    <img src=""/>
+                    <input type="file" name="userPhoto"  id="filePhoto" />
+                    <div  style="margin-left:150px;margin-top:100px;display:inline-block;color: #000034; width:130px;padding:2px;border-radius:2px">Choose from pc <i class="fa fa-pencil"></i></div>
+                </div>
+                <div style="margin-top:5px">
+                    <hr style="margin:10px; position:static"/>
+                    <div style="margin:2px;background-color:#F8F8F8; padding:5px;"><br/>
+                        <span style="font-weight: bold">Image description</span><br/>
+                        <textarea type="text" style="resize:none;width:280px;height:40px; font-size:13px;border:none; border-bottom: 1px solid #000034;" placeholder="Type your image caption or description..."></textarea>
+                    </div>
+                    <div style="margin:2px;background-color:#F8F8F8; padding:5px;">
+                        <span style="font-weight: bold">Add labels to picture</span><br/>
+                        <div style="margin-bottom:5px" id="labels">
+                        </div>
+                        <div id="labels_warning" style="display:none;color:red;font-size:10px;padding:2px;background-color: white;width:250px;margin:0px;">* Add 1 label at least. </div>
+                        <input id="labels_input"  type="text" style="width:250px;height:30px; font-size:13px;border:none; border-bottom: 1px solid gainsboro;" placeholder="Type your label to add to list...">
+                        <button id="labels_btn" type="button" disabled="true" style="border:none;background-color: white;height:30px; color: grey; font-size:20px; margin-left:10px; cursor: pointer;" class="glyphicon glyphicon-plus"></button>
+                    </div>
+                    <div style="margin:2px;background-color:#F8F8F8; padding:5px;">
+                        <span style="font-weight: bold">Location</span><br/>
+                        <input type="text" style="width:200px;height:30px; font-size:13px;border:none; border-bottom: 1px solid #000034;" placeholder="Type image location">
+                        <button  id="send_post" type="submit"  class="glyphicon glyphicon-send"></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div><br/><br/>
+    <div>
+        <% include headers/chat_and_friends.ejs %>
+    </div>
+</div>
+</body>
+</html>

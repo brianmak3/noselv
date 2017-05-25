@@ -1,0 +1,39 @@
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+a {
+  color: #00b7ff;
+}
+#forgot_pass {
+  padding:5px;
+  color:midnightblue ;
+  background-color: white;
+  position:absolute;
+  top:35px;
+  height:25px;
+  border-radius:10px;
+  display:non;
+}
+#forgot_pass:after {
+  content: " ";
+  border-top: 11px solid white;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  position: relative;
+  top: 15px;
+  left:40px;
+}
+::-webkit-input-placeholder {
+  color: rgba(257, 257, 257, 0.6);
+}
+:-ms-input-placeholder {
+  color: rgba(257, 257, 257, 0.6);
+}
+::-moz-placeholder {
+  color: rgba(257, 257, 257, 0.6);
+  opacity: 1;
+}
+:-moz-placeholder {
+  color: rgba(257, 257, 257, 0.6);
+  opacity: 1;
+}

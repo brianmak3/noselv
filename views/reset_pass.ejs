@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title%></title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width = device-width, initial scale=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <script src="javascripts/jquery.js"></script>
+    <script src="javascripts/jquery-ui.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="shortcut icon" href="images/noSelvie.png" />
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script type="text/javascript" src="javascripts/login_page.js"></script>
+    <script src= "http://127.0.0.1:8080/socket.io/socket.io.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#em_pass, #em_pass1').keyup(function(){
+                 pass = jQuery.trim($('#em_pass').val());
+                 cpass = jQuery.trim($('#em_pass1').val());
+
+               if(pass !='' && cpass !=''){
+                   $('#update').attr('disabled',false).css({'backgroundColor':'white','color':'rgba( 0, 51, 102, 1)','fontWeight':'bold'});
+
+               }else{
+                   $('#update').attr('disabled',true).css({'backgroundColor':'rgba(25,25,112,0.5)','color':'grey','fontWeight':'lighter'});
+               }
+
+           });
+
+            $('#pass_reset').submit(function() {
+                if (pass.length < 8) {
+                    $('.status_warn').show().text('* The password must be at least 8 characters');
+                    return false;
+                }
+                else if (pass != cpass) {
+                    $('.status_warn').show().text('* The passwords do not match.');
+                    alert(pass.length+' '+cpass.length);
+                    return false;
+                }
+            });
+
+        });
+    </script>
+</head>
+<body style="background-image: url(images/back.jpg);padding:0px;">
+<div class="fullheight" style="height: auto; overflow: hidden; background-color:rgba(123,104,238,0.7); margin:0px; color:white">
+    <div class="col-lg-offset- col-md-offset-5 col-sm-offset-5 col-xs-offset-3" style="margin-top: 40px; height: 170px; width: 170px; border-radius: 50%; background-color: white">
+        <img src="images/noSelvie.png" style="margin-top: 25px; height: 120px; width: 120px; margin-left: 26px; border-radius: 5px">
+    </div>
+    <div class="col-lg-offset-5 col-md-offset-5 col-sm-offset-5 col-xs-offset-1 col-lg-4 col-md-4 col-sm-5 col-xs-10 " id="fg_div" style="margin-top: 30px">
+        <img src="images/password.png" style="opacity: 0.6; border-radius: 5px;"/><span style="color:rgba(257,257,257,0.7); font-size:20px;font-weight:bold"> Retrieving your password </span><br/>
+        <form method="post" id="pass_reset" action="/reset_password">
+           <br/> <input class="col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-2" id="em_pass" type="password" name="password"  placeholder="Type your password." style="border:none; border-bottom:1px solid rgba(257, 257, 257, 0.4); color:white; background-color: rgba(0,0,0,0); font-size:15px; width: 200px; height: 30px"/>
+            <br/><br/>
+            <div class="col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-2 status_warn" style="display: none; max-width:230px; border-radius:10px; color:red; background-color:white; padding:5px; padding-left:20px; font-size:13px"></div>
+            <br/><input class="col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-2" id="em_pass1" type="password"  placeholder="Type your password again" style="border:none; border-bottom:1px solid rgba(257, 257, 257, 0.4); color:white; background-color: rgba(0,0,0,0); font-size:15px; width: 200px; height: 30px"/>
+            <br/><br/><br/>
+            <input type="text" value="<%= email %>" name="email" style="display: none">
+            <input id="update"  class="col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-offset-2 col-lg-6 col-sm-7 col-md-6 col-xs-6" type="submit" value="Next" style="background-color: rgba(25,25,112,0.5); color:grey; height:30px; border:none; border-radius: 15px;">
+            <br/><br/>
+        </form>
+        <br/><a href="/" class="col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-offset-3"  style="cursor:pointer;  color:rgba(257, 257, 257, 0.6); font-size:15px">Back to login?<span style="color: white"> Sign in</span></a><br/>
+    </div>
+</div>
+</body>
+</html>

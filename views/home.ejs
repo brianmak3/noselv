@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <% include headers/bootstrap_js.ejs %>
+</head>
+<body style="padding:0px; background-color: rgba(229,229,242, 0.9);">
+<% include headers/main_header.ejs %>
+<div class="fullheight" style="height: auto; overflow: hidden; overflow-y:auto; margin:0px;margin:0px">
+
+    <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-1" style="display:noe;height:auto; width:440px; margin-top:49px;">
+        <div style="background-color: white; border-radius:2px; padding: 5px">
+            <img src="<%= user.profile_pic%>" style="border-radius:50%;height:45px; width:45px;">
+            <span style="font-weight: bold; color:#000034"><%= user.first_name +' '+ user.last_name %></span><span style="float:right; margin-right:5px">2h</span><br/>
+            <span  style="font-weight: bold; color:grey; font-size:12px;margin-left:30px;">
+                    <button style="border:none; border-radius:2px; background-color: #E8E8E8">Nature</button>
+                    <button style="border:none; border-radius:2px; background-color: #E8E8E8">Switzerland</button>
+                    <button style="border:none; border-radius:2px; background-color: #E8E8E8">Lakes</button>
+            </span><br/>
+            <img src="images/profile.jpg" style="height:260px; width:430px; border-radius: 3px; margin-top:4px" >
+            <div style="margin-top:5px">
+                <div style="position:relative; margin-top:2px;margin-left:290px; ">
+                    <span class="fa-stack fa-xs" style="font-size: 12px">
+                       <i class="fa fa-comment-o fa-stack-2x"></i>
+                         <i class="fa fa-stack-1x">5</i>
+                    </span>
+                    <span class="fa-stack fa-xs" style="font-size: 12px; margin-left:20px">
+                       <i class="fa fa-heart-o fa-stack-2x"></i>
+                         <i class="fa fa-stack-1x">2</i>
+                    </span>
+                    <span class="fa-stack fa-xs" style="font-size: 20px;padding:0px; margin-left:20px">
+                      <i class="fa fa-user"></i>
+                    </span>
+                </div>
+                <div style="font-family: Arial; font-size:13px">
+                    Sometimes we ought to be our own selves in oreder to succedd in this live.
+                    Otherwise if you depend on someone be sure something wrong is going to happen on the way and your
+                    are going to blame no one on that absolutely.
+                </div>
+                <hr style="margin:0px; position:static"/>
+                <div style="margin:10px;display: none; ">
+                    <span style="font-weight: bold; color: #000034;font-size:14px">Comments</span><br/>
+                    <div style="margin-left:20px; height:200px; overflow: hidden;overflow-y: auto">
+                            <div style="display:inline-block; width:360px;">
+                                <img src="images/davi.jpg" style="height:50px; width:50px; border-radius: 50%;"/>
+                                <span style=" font-weight:bold; color: #000034; font-size:12px;">David Wayne</span><br/>
+                                <div style="margin-left:50px;font-size: 12px">Wow!! what a wonderful saying over there, i think i am going to weight my options
+                                againa and determine what i really want in life.</div>
+                                <div style="float: right"><span style="font-weight: bold">27</span><span style="color: grey"> min</span></div>
+                            </div>
+                        <hr style="margin:3px; position:static"/>
+                                <div style="display:inline-block; width:360px;">
+                                <img src="images/me.jpg" style="height:50px; width:50px; border-radius: 50%;"/>
+                                <span style=" font-weight:bold; color: #000034; font-size:12px">Gadafy Henry</span><br/>
+                                <div style="margin-left:50px;font-size: 12px">Wow!! what a wonderful saying over there, i think i am going to weight my options
+                                againa and determine what i really want in life.</div>
+                                <div style="float: right"><span style="font-weight: bold;float:right">15:30</span><br/>
+                                    <span style="color: grey"> 27:3:2017</span>
+                                </div>
+                            </div>
+                        <hr style="margin:3px; position:static"/>
+                                <div style="display:inline-block; width:360px;">
+                                <img src="images/nashon.jpg" style="height:50px; width:50px; border-radius: 50%;"/>
+                                <span style=" font-weight:bold; color: #000034; font-size:12px">Nahashon Mokua</span><br/>
+                                <div style="margin-left:50px;font-size: 12px">Wow!! what a wonderful saying over there, i think i am going to weight my options
+                                againa and determine what i really want in life.</div>
+                                <div style="float: right"><span style="font-weight: bold;float:right">15:30</span><br/>
+                                    <span style="color: grey"> 27:3:2017</span>
+                                </div>
+                            </div>
+
+                    </div>
+                </div>
+                <div style="margin:10px;display: none; ">
+                    <span style="font-weight: bold; color: #000034;font-size:14px">People who like this.</span><br/>
+                    <div style="margin-left:20px; height:200px; overflow: hidden;overflow-y: auto">
+                        <div style="display:inline-block; width:360px;">
+                            <img src="images/davi.jpg" style="height:50px; width:50px; border-radius: 50%;"/>
+                            <span style=" font-weight:bold; color: #000034; font-size:12px;">David Wayne</span>
+                            <div style="float: right"><span style="font-weight: bold">27</span><span style="color: grey"> min</span></div>
+                        </div>
+                        <hr style="margin:3px; position:static"/>
+                        <div style="display:inline-block; width:360px;">
+                            <img src="images/me.jpg" style="height:50px; width:50px; border-radius: 50%;"/>
+                            <span style=" font-weight:bold; color: #000034; font-size:12px">Gadafy Henry</span>
+                            <div style="float: right"><span style="font-weight: bold;float:right">15:30</span><br/>
+                                <span style="color: grey"> 27:3:2017</span>
+                            </div>
+                        </div>
+                        <hr style="margin:3px; position:static"/>
+                        <div style="display:inline-block; width:360px;">
+                            <img src="images/nashon.jpg" style="height:50px; width:50px; border-radius: 50%;"/>
+                            <span style=" font-weight:bold; color: #000034; font-size:12px">Nahashon Mokua</span>
+                            <div style="float: right"><span style="font-weight: bold;float:right">15:30</span><br/>
+                                <span style="color: grey"> 27:3:2017</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <hr style="margin:0px; position:static"/>
+                <div style="margin:2px;background-color:#F8F8F8; padding:5px;">
+                    <img src="<%= user.profile_pic%>" style="border-radius:2px; height:30px; width:30px;">
+                    <input type="text" style="width:380px;height:30px; font-size:13px;border:none; border-bottom: 1px solid #000034;" placeholder="Type your comment...">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-1" style="height:auto; width:440px; margin-top:49px;">
+        <div style="background-color: white; border-radius:2px; padding: 5px">
+            <img src="<%= user.profile_pic%>" style="border-radius:50%;height:45px; width:45px;">
+            <span style="font-weight: bold; color:#000034"><%= user.first_name +' '+ user.last_name %></span><br/>
+            <span  style="font-weight: bold; color:grey; font-size:12px;margin-left:50px;">
+                   Welcome to noSelve <%= user.first_name +' '+ user.last_name %>.
+            </span><br/>
+            <img src="images/noSelvie.png" style="height:260px; width:430px; border-radius: 3px; margin-top:4px" >
+            <div style="margin-top:5px">
+                <hr style="margin:5px; position:static"/>
+                <div style="font-family: Arial; font-size:13px">
+                    Make new friends and you will receive their daily posts and much more feeds.
+                </div>
+                <hr style="margin:0px; position:static"/>
+                <div style="margin:2px;background-color:#F8F8F8;color: gray; padding:5px;font-size:35px">
+                    Unfortunately you don't have any posts or feeds to display.
+                </div>
+                <div style="margin:2px;background-color:#F8F8F8;color: gray; padding:5px;font-size:35px">
+                    <img src="images/noSelvie.png" style="height:100px; width:100px; border-radius: 3px; margin-top:4px" >
+                    <span style="font-family: harrington;font-size:25px;color: #000034; font-weight:bold">Where nature is build!!</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <% include headers/chat_and_friends.ejs %>
+    </div>
+
+</div>
+</body>
+</html>

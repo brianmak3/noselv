@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+   <% include headers/bootstrap_js.ejs %>
+    <script>
+        $(document).ready(function(){
+          $('.update_file').mouseenter(function(){
+              $('.update_pic').css({'color': 'white', 'backgroundColor':'#000034'});
+          }).mouseleave(function(){
+              $('.update_pic').css({'color': '#000034', 'backgroundColor':'white'});
+          }).change(function(){
+              $('#upload_btn').attr('disabled',false).css({'color':'white','backgroundColor': '#000034','cursor':'pointer'})
+          });
+
+           /* $('#uploadForm').submit(function() {
+                $("#status").empty().text("File is uploading...");
+                $(this).ajaxSubmit({
+
+                    error: function(xhr) {
+                        status('Error: ' + xhr.status);
+                    },
+
+                    success: function(response) {
+                        $("#status").empty().text(response);
+                        console.log(response);
+                    }
+                });
+                //Very important line, it disable the page refresh.
+                return false;
+            });*/
+            try{
+                var socket = io.connect('http://127.0.0.1:8080');
+            }catch(e){
+                // set status to warn
+            }
+
+            if(socket != '' && socket == 'undefined')
+            {
+               alert('Something is not okay');
+            }
+            $('#status_input').keyup(function(){
+                 status = jQuery.trim($(this).val());
+                if(status == ''){
+                    $('#sbt_status_btn').css({'color':'black','backgroundColor':'lightgrey'}).attr('disabled',true);
+                    $('#charRem').slideUp('slow');
+                }else{
+                    $('#charRem').slideDown('slow');
+                    $('#remaining_char').text(parseInt($('#status_input').attr('maxlength'))-parseInt(status.length));
+                    $('#sbt_status_btn').css({'color':'white','backgroundColor':'#000034'}).attr('disabled',false )
+                }
+            });
+            $('#sbt_status_btn').click(function () {
+                $('#status_text').text(status)
+                    $('#charRem').hide('slow');
+                $('#status_input').val('');
+                $('#sbt_status_btn').css({'color':'black','backgroundColor':'lightgrey'}).attr('disabled',true);
+                var day = new Date();
+                var time = Date.now();
+                 var  minutes = day.getMinutes();
+                 var  hours = day.getHours();
+                hours = (String(hours).length != 2) ? '0' + hours : hours;
+                minutes = (String(minutes).length != 2) ? '0' + minutes : minutes;
+                    time_today = hours + ": " + minutes ;
+                    $('#time_update').text(time_today);
+                          var user_div =  $('#username');
+                var username = user_div.attr('value');
+                var user_names = user_div.text();
+                socket.emit('status_update',{status:status, time:time, username:username, user_names:user_names});
+            });
+
+            $('.drop_down_friends').click(function(){
+                var friends_catg = $(this).attr('value');
+                var my_user = $('#username').attr('value');
+                if(friends_catg == 'following'){
+                    $('#followers').hide(300);
+                    socket.emit('following',{user_name: my_user});
+                }else{
+                    $('#following').hide(300);
+                    socket.emit('followers',{user_name: my_user});
+                }
+                $('#'+friends_catg+'').slideToggle(300);
+            });
+
+            socket.on('following_results',function (data) {
+                $('#follwing').text(data.length);
+                $('#following1').html('');
+                if(data.length > 0){
+                    for(i=0; i<data.length; i++) {
+                        $('#following1').append('<form action="friend_profile" method="post"><button type="submit"  class="searchResltBtn" name="username" value="'+data[i].user_name+'" > <img style="height:30px;width:30px;border-radius: 50%;margin-right:3px" src="'+data[i].profile_pic+'"/><span style=" font-family: Arial;">'+data[i].first_name+' '+data[i].last_name+'</span> </button> </form>');
+                           }
+                }else{
+                    $('#following1').html('<span style="margin-left:20px;font-size:12px;">You are currently not following anyone.</span>');
+                }
+            });
+            socket.on('followed_results',function (data) {
+                $('#follwrs').text(data.length);
+                $('#followers1').html('');
+                if(data.length > 0){
+                    for(i=0; i<data.length; i++) {
+                        $('#followers1').append('<form action="friend_profile" method="post"><button type="submit"  class="searchResltBtn" name="username" value="'+data[i].user_name+'" > <img style="height:30px;width:30px;border-radius: 50%;margin-right:3px" src="'+data[i].profile_pic+'"/><span style=" font-family: Arial;">'+data[i].first_name+' '+data[i].last_name+'</span> </button> </form>');
+                    }
+                }else{
+                    $('#followers1').html('<span style="margin-left:20px;font-size:12px;">You are currently not being followed.</span>');
+                }
+            });
+
+        });
+    </script>
+
+</head>
+<body style="padding:0px; background-color: rgba(229,229,242, 0.9);">
+<% include headers/main_header.ejs %>
+<div class="fullheight" style="height: auto;  margin:0px;margin:0px;width:100%">
+    <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-1" style="height:auto; width:440px; margin-top:45px;">
+        <div style="background-color: white; border-radius:2px; padding: 5px">
+            <img src="<%= user.profile_pic%>" style="border-radius:2px;height:30px; width:30px;">
+            <span id="username" value="<%= user.user_name%>" style="font-weight: bold; color:#000034"><%= user.first_name +' '+ user.last_name %></span>
+            <% if(user.profile_pic != 'images/bigAvatar.jpg'){%>
+            <span  style="font-weight: lighter; color:grey; font-size:12px; float:right">Updated profile
+            </span><br/>
+            <%}else{%>
+            <span  style="font-weight: lighter; color:grey; font-size:12px; float:right">Profile pic missing</span><br/>
+            <%}%>
+            <img src="<%= user.profile_pic%>" style="height:280px; width:430px; border-radius: 3px;margin-top:6px" >
+            <div style="margin-top:5px">
+                <form id="uploadForm" enctype="multipart/form-data" action="/api/photo" method="post">
+                 <input name="userPhoto" class="update_file" type="file" style="display:inline-block;width:95px; margin-top:-23px; opacity:1;cursor:pointer"/>
+                    <button type="submit"  id="upload_btn" disabled="true" name="submit"  style="float:right;color: #000034;display: inline-block; width:90px;padding:2px;border-radius:2px; font-size:11px">Update <i class="fa fa-pencil" style="float:right;margin-right:10px"></i></button>
+
+                </form>
+
+                <hr style="margin:10px; position:static"/>
+
+            </div>
+        </div>
+        <div style="background-color: white; border-radius:2px; padding: 5px; margin-top:10px">
+            <span style="font-weight: bold; color:#000034"> Status<br/></span>
+            <i style="font-size: 20px; margin-left:10px" class="fa fa-globe"></i>
+            <% if(user.status_update ==''){%>
+            <span  style="font-weight: bold; color:grey; font-size:12px">Your current staust is by noSelve default.</span><br/>
+            <%}else{%>
+            <span  style="font-weight: bold; color:grey; font-size:12px">Your friends will be able to see this.</span>
+            <%}%>
+
+            <div style="font-weight: lighter;font-size:13px; margin:2px;background-color:#F8F8F8; padding:5px;margin-top:10px">
+                <span id="status_text"><% if(user.status_update ==''){%>
+                    Life is full of nature with noSelve.
+                <%}else{%>
+                   <%= user.status_update %>
+                <%}%></span>
+            </div>
+            <div style="font-weight: bold;font-size:20px; margin:2px;background-color:#F8F8F8; padding:5px;margin-top:10px">
+                <div id="charRem" style="display:none;width:30px; font-size:10px;background-color: lightgrey; border-radius: 3px">
+                    <span id="remaining_char" style="margin-left:5px"></span>
+                </div>
+                <input type="text" id="status_input" maxlength="200" style="width:300px;height:30px; font-size:13px;border:none; font-weight: lighter; border-bottom: 1px solid #D0D0D0;" placeholder="Write your status...">
+                <button type ="button" id="sbt_status_btn" disabled="true" style="height:30px; margin-left:-5px;border:none;border-radius:2px; font-weight:lighter; font-size:11px">  <i class="fa fa-pencil"></i>  Post Status</button>
+            </div>
+
+        </div>
+        <div style="background-color: white; border-radius:2px; padding: 5px; margin-top:10px">
+            <span style="font-weight: bold; color:#000034"><i class="fa fa-users"></i> Friends</span><br/>
+            <div style="font-size:14px; margin:2px; padding:5px;margin-top:10px">
+                <span style="color: darkslategray;">Following</span>
+                <i style="font-size:20px; float:right;margin-top:-5px" class="fa fa-sort-desc drop_down_friends" value="following"></i>
+                <span id="follwing" style="color:#000034;font-weight: bold;float:right;margin-right:20px;">
+                    <% if(user.followings.length > 1000){ %>
+                    <%= Math.flow(user.followings.length/1000) %>k
+                    <%}else{%>
+                    <%= user.followings.length %>
+                    <%}%>
+                </span>
+            </div>
+            <div style="margin:10px;display: none; " id="following" >
+                <div id="following1" style="margin-left:20px;height:auto; max-height:200px; overflow: hidden;overflow-y: auto">
+
+                </div>
+            </div>
+            <div style="font-size:14px; margin:2px; padding:5px;margin-top:10px">
+                <i style="font-size:20px;float:right;margin-top:-5px" class="fa fa-sort-desc drop_down_friends" value="followers"></i>
+                <span style="color: darkslategray;" >Followers</span><span id="follwrs" style="color:#000034;font-weight: bold;float:right;margin-right:20px;">
+                <% if(user.followeds.length > 1000){ %>
+                    <%= Math.flow(user.followeds.length/1000) %>k
+                    <%}else{%>
+                    <%= user.followeds.length %>
+                    <%}%>
+                </span>
+            </div>
+            <div style="margin:10px;display: none;" id="followers" >
+                <div id="followers1" style="margin-left:20px; height:auto; max-height:200px; overflow: hidden;overflow-y: auto">
+
+                </div>
+            </div>
+        </div>
+
+        <div style="background-color: white; border-radius:2px; padding: 5px; margin-top:10px">
+            <span style="font-weight: bold; color:#000034; "> <i style="font-size:15px;" class="fa fa-file-image-o"></i> Photos</span><br/>
+            <div style="max-height:300px; overflow: hidden; overflow-y: auto">
+                <% for(i=0; i<=20; i++){%>
+                <img src="images/profile.jpg" style="margin-bottom:1px;border-radius:2px;height:100px; width:100px;">
+                <%}%>
+
+            </div>
+        </div>
+    </div>
+   <br/><br/>
+    <div>
+        <% include headers/chat_and_friends.ejs %>
+   </div>
+</div>
+</body>
+</html>

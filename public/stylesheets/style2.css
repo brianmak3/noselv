@@ -1,0 +1,142 @@
+.menu_icons{
+    color:rgba(257, 257, 257, 0.4);
+}
+.menu_icons:hover{
+    cursor: pointer;
+    color:white;
+}
+a{
+    cursor:pointer;
+
+}a:hover{
+     text-decoration: none;
+ }
+ .view_more_status{
+     color:#000034;
+     margin-left:30px
+ }
+ .view_more_status:hover{
+     text-decoration: underline;
+ }
+#search_div::-webkit-scrollbar {
+    width: 0 !important;
+}
+.searchResltBtn{
+    border:none;
+    width:100%;
+    margin:2px;
+    font-size:11px;
+    font-weight:bold;
+    padding:5px;
+    text-align: left;
+    background-color: white;
+    margin-bottom:0px;
+}
+.searchResltBtn:hover{
+    background-color: gainsboro;
+}
+#profile_link,.friend_link{
+    color: white;text-decoration: none; background-color:#000034;padding:10px;padding-left:30px;padding-right:30px;border-radius: 20px;
+}
+#profile_link:hover, .friend_link:hover{
+    background-color: #D0D0D0;
+    color: #000034;
+    cursor: pointer;
+}
+.show_details{
+    color: #000034;
+}.show_details:hover{
+    color: white;
+    background-color: #000034;
+    cursor: pointer;
+ }
+ .drop_down_friends{
+     cursor:pointer;
+ }.drop_down_friends:hover{
+    color: #000034;
+   }
+.uploader {
+    margin-top:2px;
+    position:relative;
+    overflow:hidden;
+    width:430px;
+    height:285px;
+    background:#f3f3f3;
+    border:2px dashed #e8e8e8;
+
+}
+.person_div{
+    border-radius:2px;
+    height:110px;
+    width:100px;
+    display: inline-block;
+}
+
+.name_btn{
+   margin:2px;
+    color:#000034;
+    font-size:10px;
+    border:none;
+    padding:0px;
+    background-color: white;
+}
+.name_btn:hover{
+    text-decoration: underline;
+}
+
+#filePhoto{
+    position:absolute;
+    width:430px;
+    height:285px;
+    top:-50px;
+    left:0;
+    z-index:2;
+    opacity:0;
+    cursor:pointer;
+}
+
+.uploader img{
+    position:absolute;
+    width:430px;
+    height:285px;
+    top:-1px;
+    left:-1px;
+    z-index:1;
+    border:none;
+}
+.update_pic{
+    cursor: pointer;
+}.update_pic:hover{
+    text-decoration: underline;
+    color: #000034;
+ }
+ .person_image{
+     height: 100px;
+     background-color: black;
+     position:relative;
+     top:-100px;
+     opacity:0;
+     width:100px;
+ }.person_image:hover{
+    opacity: 0.7;
+    cursor: pointer;
+   }
+  .x_label{
+      color:grey;
+      margin-left:5px;
+  }
+  .x_label:hover{
+      color: red;
+  }
+  #send_post{
+      border:none;
+      background-color: white;
+      padding:10px;
+      color: #000034;
+      font-size:20px;
+      margin-left:120px;
+      cursor: pointer;
+  }
+  #send_post:hover{
+      background-color: #DCDCDC;
+  }

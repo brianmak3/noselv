@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title%></title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width = device-width, initial scale=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <script src="javascripts/jquery.js"></script>
+    <script src="javascripts/jquery-ui.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="shortcut icon" href="images/noSelvie.png" />
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script type="text/javascript" src="javascripts/login_page.js"></script>
+    <script src= "http://127.0.0.1:8080/socket.io/socket.io.js"></script>
+    <script>
+        $(document).ready(function () {
+          var valid_length =  $('#accnt_confirmation').text().length;
+          if(valid_length <= 68){
+              $('#accnt_confirmation').css('color','red')
+          }
+        });
+    </script>
+</head>
+<body style="background-image: url(images/back.jpg);padding:0px;">
+<div class="fullheight" style="height: auto; overflow: hidden; background-color:rgba(123,104,238,0.7); margin:0px; color:white">
+    <div class="col-lg-offset- col-md-offset-5 col-sm-offset-5 col-xs-offset-3" style="margin-top: 40px; height: 170px; width: 170px; border-radius: 50%; background-color: white">
+        <img src="images/noSelvie.png" style="margin-top: 25px; height: 120px; width: 120px; margin-left: 26px; border-radius: 5px">
+    </div>
+    <!--Sign up division-->
+    <div class="col-lg-offset-5 col-md-offset-5 col-sm-offset-5 col-xs-offset-2 col-lg-4 col-md-4 col-sm-5 col-xs-10 " id="register_div" style="display:nne; margin-top: 30px">
+        <div id="verification_div">
+
+            <form id="registration_form" action="/signup" method="post">
+                <div id="accnt_confirmation" class="status_warn" value="<%= code_sent %>" style="color:forestgreen; width:300px; background-color: aliceblue; border-radius: 10px; padding:10px"><%= signupMessage %> </div>
+                <br/>
+                <img src="images/member.png" style="opacity: 0.6; border-radius: 5px;"/><span style="color:rgba(257,257,257,0.7); font-size:20px;font-weight:bold"> Creating a new account </span><br/>
+                <input id="fname" type="text" name="first_name"  placeholder="First name" style="border:none; border-bottom:1px solid rgba(257, 257, 257, 0.4); color:white; background-color: rgba(0,0,0,0); font-size:15px; width: 200px; height: 30px"/>
+                <br/> <br/>
+                <input id="lname" type="text" name="last_name"  placeholder="Last name" style="border:none; border-bottom:1px solid rgba(257, 257, 257, 0.4); color:white; background-color: rgba(0,0,0,0); font-size:15px; width: 200px; height: 30px"/>
+                <br/> <br/>
+                <div class="status_warn" style="position:absolute; top:80px; font-weight: lighter; display: none; font-size:12px;"><span style="color:red">*</span>User name must be at least 8 characters</div>
+                <input id="uname"  type="text" name="username"  placeholder="User name" title="Must be at least 8 characters." style="border:none; border-bottom:1px solid rgba(257, 257, 257, 0.4); color:white; background-color: rgba(0,0,0,0); font-size:15px; width: 200px; height: 30px"/>
+                <br/> <br/>
+                <input id="email" type="email" name="email"  placeholder="Email" style="border:none; border-bottom:1px solid rgba(257, 257, 257, 0.4); color:white; background-color: rgba(0,0,0,0); font-size:15px; width: 200px; height: 30px"/>
+                <br/> <br/>
+                <div class="status_warn" style="position:absolute; top:170px; font-weight: lighter; display: none; font-size:12px;"><span style="color:red">*</span>Password must not be the user name.</div>
+                <input id="pass" type="password"  title="Must be at least 8 characters."  name="password"  placeholder="password" style="border:none; border-bottom:1px solid rgba(257, 257, 257, 0.4); color:white; background-color: rgba(0,0,0,0); font-size:15px; width: 200px; height: 30px"/>
+                <div class="status_warn" style="position:absolute; top:170px; font-weight: lighter; display: none; font-size:12px;"><span style="color:red">*</span>Password must be at least 8 characters.</div>
+                <br/> <br/>
+                <div class="status_warn" style="position:absolute; top:215px; font-weight: lighter; display: none; font-size:12px;"><span style="color:red">*</span>The passwords do not match.</div>
+                <input id="cpass" type="password"   placeholder="Confirm password" style="border:none; border-bottom:1px solid rgba(257, 257, 257, 0.4); color:white; background-color: rgba(0,0,0,0); font-size:15px; width: 200px; height: 30px"/>
+                <br/> <br/>
+                <input id="register_btn" disabled="true" class="col-lg-offset-3 col-md-offset-2 col-sm-offset-2 col-xs-offset-2 col-lg-6 col-sm-7 col-md-6 col-xs-6" type="submit" value="Register" style="background-color: rgba(25,25,112,0.5); color:grey; height:30px; border:none; border-radius: 15px;">
+                <br/>   <br/>   <br/>
+                <a href="/" class="col-lg-offset-2 col-md-offset-1 col-sm-offset-1 col-xs-offset-1"  style="cursor:pointer; color:rgba(257, 257, 257, 0.6); font-size:15px">Already have an account? <span style="color: white">Sign in</span></a><br/>
+                <br/>   <br/>
+            </form>
+        </div>
+         </div>
+</div>
+
+</body>
+</html>
