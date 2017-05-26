@@ -2,7 +2,7 @@ const nodemailer = require('nodemailer');
 var async = require('async');
 var crypto = require('crypto');
 var multer = require('multer');
-var User = require('../routes/models/user');
+var User = require('../routes/models/User.js');
 var transporter = nodemailer.createTransport({
     service: 'Gmail',
     auth: {
