@@ -25,7 +25,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser({uploadDir:'/path/to/temporary/directory/to/store/uploaded/files'}));
 app.use(cookieParser());
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(sessions({secret: 'anystrintext', saveUninitialized: true, resave: true}));
 app.use(passport.initialize());
 app.use(passport.session());
