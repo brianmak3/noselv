@@ -6,8 +6,8 @@ var User = require('../routes/models/User.js');
 var transporter = nodemailer.createTransport({
     service: 'Gmail',
     auth: {
-        user: 'brianworkss@gmail.com',
-        pass: 'Maryhenry3!'
+        user: 'noselv2@gmail.com',
+        pass: 'Maryhenry3'
     }
 });
 var storage =   multer.diskStorage({

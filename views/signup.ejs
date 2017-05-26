@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="shortcut icon" href="images/noSelvie.png" />
+    <link rel="shortcut icon" href="images/noSelvie.PNG" />
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <script type="text/javascript" src="javascripts/login_page.js"></script>
     <script src= "http://127.0.0.1:8080/socket.io/socket.io.js"></script>
@@ -25,10 +25,10 @@
         });
     </script>
 </head>
-<body style="background-image: url(images/back.jpg);padding:0px;">
+<body style="background-image: url(images/back.JPG);padding:0px;">
 <div class="fullheight" style="height: auto; overflow: hidden; background-color:rgba(123,104,238,0.7); margin:0px; color:white">
     <div class="col-lg-offset- col-md-offset-5 col-sm-offset-5 col-xs-offset-3" style="margin-top: 40px; height: 170px; width: 170px; border-radius: 50%; background-color: white">
-        <img src="images/noSelvie.png" style="margin-top: 25px; height: 120px; width: 120px; margin-left: 26px; border-radius: 5px">
+        <img src="images/noSelvie.PNG" style="margin-top: 25px; height: 120px; width: 120px; margin-left: 26px; border-radius: 5px">
     </div>
     <!--Sign up division-->
     <div class="col-lg-offset-5 col-md-offset-5 col-sm-offset-5 col-xs-offset-2 col-lg-4 col-md-4 col-sm-5 col-xs-10 " id="register_div" style="display:nne; margin-top: 30px">
@@ -37,7 +37,7 @@
             <form id="registration_form" action="/signup" method="post">
                 <div id="accnt_confirmation" class="status_warn" value="<%= code_sent %>" style="color:forestgreen; width:300px; background-color: aliceblue; border-radius: 10px; padding:10px"><%= signupMessage %> </div>
                 <br/>
-                <img src="images/member.png" style="opacity: 0.6; border-radius: 5px;"/><span style="color:rgba(257,257,257,0.7); font-size:20px;font-weight:bold"> Creating a new account </span><br/>
+                <img src="images/member.PNG" style="opacity: 0.6; border-radius: 5px;"/><span style="color:rgba(257,257,257,0.7); font-size:20px;font-weight:bold"> Creating a new account </span><br/>
                 <input id="fname" type="text" name="first_name"  placeholder="First name" style="border:none; border-bottom:1px solid rgba(257, 257, 257, 0.4); color:white; background-color: rgba(0,0,0,0); font-size:15px; width: 200px; height: 30px"/>
                 <br/> <br/>
                 <input id="lname" type="text" name="last_name"  placeholder="Last name" style="border:none; border-bottom:1px solid rgba(257, 257, 257, 0.4); color:white; background-color: rgba(0,0,0,0); font-size:15px; width: 200px; height: 30px"/>
