@@ -1,106 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="912e56a2-67a2-4487-9e0c-f132faf74ce5" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../casualdispatch/public/html/images/background.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../casualdispatch/public/html/images/casual_image.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../casualdispatch/public/html/images/crystalball.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../casualdispatch/public/html/images/home1.PNG" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../casualdispatch/public/html/images/home2.PNG" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../casualdispatch/public/html/images/main_logo.PNG" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../casualdispatch/public/html/images/phone.PNG" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../casualdispatch/public/images/background.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../casualdispatch/public/images/crystalball.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../casualdispatch/public/images/main_logo.PNG" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../casualdispatch/public/images/userAvatar.jpg" />
-      <change type="NEW" beforePath="" afterPath="$USER_HOME$/WebstormProjects/untitled2/public/images/1.png" />
-      <change type="NEW" beforePath="" afterPath="$USER_HOME$/WebstormProjects/untitled2/public/images/2.png" />
-      <change type="NEW" beforePath="" afterPath="$USER_HOME$/WebstormProjects/untitled2/public/images/3.png" />
-      <change type="NEW" beforePath="" afterPath="$USER_HOME$/WebstormProjects/untitled2/public/images/appstore.png" />
-      <change type="NEW" beforePath="" afterPath="$USER_HOME$/WebstormProjects/untitled2/public/images/bullet.png" />
-      <change type="NEW" beforePath="" afterPath="$USER_HOME$/WebstormProjects/untitled2/public/images/certifcate.png" />
-      <change type="NEW" beforePath="" afterPath="$USER_HOME$/WebstormProjects/untitled2/public/images/compass.png" />
-      <change type="NEW" beforePath="" afterPath="$USER_HOME$/WebstormProjects/untitled2/public/images/favicon.ico" />
-      <change type="NEW" beforePath="" afterPath="$USER_HOME$/WebstormProjects/untitled2/public/images/fb.png" />
-      <change type="NEW" beforePath="" afterPath="$USER_HOME$/WebstormProjects/untitled2/public/images/googleplay.png" />
-      <change type="NEW" beforePath="" afterPath="$USER_HOME$/WebstormProjects/untitled2/public/images/gplus.png" />
-      <change type="NEW" beforePath="" afterPath="$USER_HOME$/WebstormProjects/untitled2/public/images/headerbg.png" />
-      <change type="NEW" beforePath="" afterPath="$USER_HOME$/WebstormProjects/untitled2/public/images/how2bg.png" />
-      <change type="NEW" beforePath="" afterPath="$USER_HOME$/WebstormProjects/untitled2/public/images/instagram.png" />
-      <change type="NEW" beforePath="" afterPath="$USER_HOME$/WebstormProjects/untitled2/public/images/location.png" />
-      <change type="NEW" beforePath="" afterPath="$USER_HOME$/WebstormProjects/untitled2/public/images/logo.png" />
-      <change type="NEW" beforePath="" afterPath="$USER_HOME$/WebstormProjects/untitled2/public/images/mail.png" />
-      <change type="NEW" beforePath="" afterPath="$USER_HOME$/WebstormProjects/untitled2/public/images/payment.png" />
-      <change type="NEW" beforePath="" afterPath="$USER_HOME$/WebstormProjects/untitled2/public/images/phone.png" />
-      <change type="NEW" beforePath="" afterPath="$USER_HOME$/WebstormProjects/untitled2/public/images/quality.png" />
-      <change type="NEW" beforePath="" afterPath="$USER_HOME$/WebstormProjects/untitled2/public/images/rating.png" />
-      <change type="NEW" beforePath="" afterPath="$USER_HOME$/WebstormProjects/untitled2/public/images/request.png" />
-      <change type="NEW" beforePath="" afterPath="$USER_HOME$/WebstormProjects/untitled2/public/images/security.png" />
-      <change type="NEW" beforePath="" afterPath="$USER_HOME$/WebstormProjects/untitled2/public/images/service1.jpg" />
-      <change type="NEW" beforePath="" afterPath="$USER_HOME$/WebstormProjects/untitled2/public/images/service2.jpg" />
-      <change type="NEW" beforePath="" afterPath="$USER_HOME$/WebstormProjects/untitled2/public/images/service3.png" />
-      <change type="NEW" beforePath="" afterPath="$USER_HOME$/WebstormProjects/untitled2/public/images/sms.png" />
-      <change type="NEW" beforePath="" afterPath="$USER_HOME$/WebstormProjects/untitled2/public/images/twitter.png" />
-      <change type="NEW" beforePath="" afterPath="$USER_HOME$/WebstormProjects/untitled2/public/images/wave.png" />
-      <change type="NEW" beforePath="" afterPath="$USER_HOME$/WebstormProjects/untitled2/public/images/work.png" />
-      <change type="NEW" beforePath="" afterPath="$USER_HOME$/WebstormProjects/untitled2/public/images/youtube.png" />
-      <change type="NEW" beforePath="" afterPath="$APPLICATION_CONFIG_DIR$/options/git.xml" />
-      <change type="NEW" beforePath="" afterPath="$APPLICATION_CONFIG_DIR$/options/runner.layout.xml" />
-      <change type="NEW" beforePath="" afterPath="$APPLICATION_CONFIG_DIR$/options/ui.lnf.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../casualdispatch/.idea/dictionaries/Mikel.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../casualdispatch/.idea/jsLibraryMappings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../casualdispatch/.idea/runConfigurations/bin_www.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../casualdispatch/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../casualdispatch/config/auth.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../casualdispatch/config/database.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../casualdispatch/config/passport.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../casualdispatch/public/html/about_us.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../casualdispatch/public/html/directions.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../casualdispatch/public/html/javascripts/home_page.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../casualdispatch/public/html/javascripts/jquery-ui.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../casualdispatch/public/html/javascripts/jquery.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../casualdispatch/public/html/port_map.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../casualdispatch/public/html/stylesheets/style.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../casualdispatch/public/javascripts/admin_page.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../casualdispatch/public/javascripts/home_page.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../casualdispatch/public/stylesheets/admin.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../casualdispatch/public/stylesheets/users.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../casualdispatch/routes/models/messages.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../casualdispatch/routes/models/user.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../casualdispatch/views/New_summary.ejs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../casualdispatch/views/error.ejs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../casualdispatch/views/index.ejs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../casualdispatch/views/messages.ejs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../casualdispatch/views/post_and_update.ejs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../casualdispatch/views/profile.ejs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../casualdispatch/views/shift_entry.ejs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../casualdispatch/views/signup.ejs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../casualdispatch/views/summary_list.ejs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../casualdispatch/views/summary_update.ejs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../casualdispatch/views/timebook.ejs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../casualdispatch/views/user_list.ejs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../casualdispatch/views/user_management.ejs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../casualdispatch/views/users_found.ejs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../casualdispatch/views/users_page.ejs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/config/auth.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/config/database.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/config/passport.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/jquery-ui.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/jquery.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/search.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/stylesheets/style2.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/routes/models/User.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/friend_profile.ejs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/headers/bootstrap_js.ejs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/home.ejs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/profile.ejs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/signup.ejs" />
-      <change type="NEW" beforePath="" afterPath="$USER_HOME$/WebstormProjects/untitled2/public/css/index-grid.css" />
-      <change type="NEW" beforePath="" afterPath="$USER_HOME$/WebstormProjects/untitled2/public/css/index.css" />
-      <change type="NEW" beforePath="" afterPath="$USER_HOME$/WebstormProjects/untitled2/public/css/standardize.css" />
-      <change type="NEW" beforePath="" afterPath="$USER_HOME$/WebstormProjects/untitled2/public/images/separator.svg" />
-    </list>
+    <list default="true" id="912e56a2-67a2-4487-9e0c-f132faf74ce5" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -181,12 +82,9 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
+            <state relative-caret-position="3842">
               <caret line="226" column="38" lean-forward="false" selection-start-line="226" selection-start-column="38" selection-end-line="226" selection-end-column="38" />
-              <folding>
-                <element signature="e#226#334#0" expanded="false" />
-                <element signature="e#1011#1558#0" expanded="false" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -201,11 +99,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="24" column="49" lean-forward="true" selection-start-line="24" selection-start-column="49" selection-end-line="24" selection-end-column="49" />
+            <state relative-caret-position="357">
+              <caret line="27" column="47" lean-forward="false" selection-start-line="27" selection-start-column="47" selection-end-line="27" selection-end-column="47" />
               <folding />
             </state>
           </provider>
@@ -221,11 +119,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="database.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="database.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/database.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="34">
-              <caret line="2" column="2" lean-forward="true" selection-start-line="2" selection-start-column="2" selection-end-line="2" selection-end-column="2" />
+              <caret line="2" column="2" lean-forward="false" selection-start-line="2" selection-start-column="2" selection-end-line="2" selection-end-column="2" />
               <folding />
             </state>
           </provider>
@@ -234,8 +132,8 @@
       <file leaf-file-name="package.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5">
-              <caret line="8" column="21" lean-forward="false" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
+            <state relative-caret-position="136">
+              <caret line="8" column="14" lean-forward="false" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -324,8 +222,8 @@
         <option value="$PROJECT_DIR$/views/photo_upload.ejs" />
         <option value="$PROJECT_DIR$/routes/index.js" />
         <option value="$PROJECT_DIR$/views/home.ejs" />
-        <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/config/database.js" />
+        <option value="$PROJECT_DIR$/app.js" />
       </list>
     </option>
   </component>
@@ -360,190 +258,22 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="noSelves" />
+              <option name="myItemId" value="noselv" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="noSelves" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="noSelves" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="noSelves" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="noSelves" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="noSelves" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="headers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="noSelves" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="noSelves" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="routes" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="noSelves" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="noSelves" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="routes" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="models" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="noSelves" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="noSelves" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="stylesheets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="noSelves" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="noSelves" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="stylesheets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="style.styl" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NestingTreeNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="noSelves" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="noSelves" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="javascripts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="noSelves" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="noSelves" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="images" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="noSelves" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="noSelves" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="noSelves" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="noSelves" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bin" />
+              <option name="myItemId" value="noselv" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -670,11 +400,12 @@
       <workItem from="1495632553191" duration="13512000" />
       <workItem from="1495691844282" duration="24262000" />
       <workItem from="1495739103822" duration="3332000" />
+      <workItem from="1495774867629" duration="67000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="462830000" />
+    <option name="totallyTimeSpent" value="462897000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -687,13 +418,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1370" height="772" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1524024" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22378717" sideWeight="0.1493994" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22378717" sideWeight="0.1539039" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22378717" sideWeight="0.8506006" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22378717" sideWeight="0.8460961" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18153365" sideWeight="0.478979" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -763,10 +494,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="11" column="85" lean-forward="false" selection-start-line="11" selection-start-column="85" selection-end-line="11" selection-end-column="85" />
-          <folding>
-            <element signature="e#226#334#0" expanded="false" />
-            <element signature="e#1011#1558#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -948,7 +676,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="32" lean-forward="false" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="32" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -970,7 +697,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2397">
           <caret line="141" column="0" lean-forward="false" selection-start-line="141" selection-start-column="0" selection-end-line="141" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -978,7 +704,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="17" column="42" lean-forward="false" selection-start-line="17" selection-start-column="42" selection-end-line="17" selection-end-column="42" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1042,27 +767,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5">
-          <caret line="8" column="21" lean-forward="false" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
+        <state relative-caret-position="136">
+          <caret line="8" column="14" lean-forward="false" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
+        <state relative-caret-position="3842">
           <caret line="226" column="38" lean-forward="false" selection-start-line="226" selection-start-column="38" selection-end-line="226" selection-end-column="38" />
-          <folding>
-            <element signature="e#226#334#0" expanded="false" />
-            <element signature="e#1011#1558#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="49" lean-forward="true" selection-start-line="24" selection-start-column="49" selection-end-line="24" selection-end-column="49" />
           <folding />
         </state>
       </provider>
@@ -1078,7 +792,15 @@
     <entry file="file://$PROJECT_DIR$/config/database.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
-          <caret line="2" column="2" lean-forward="true" selection-start-line="2" selection-start-column="2" selection-end-line="2" selection-end-column="2" />
+          <caret line="2" column="2" lean-forward="false" selection-start-line="2" selection-start-column="2" selection-end-line="2" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="27" column="47" lean-forward="false" selection-start-line="27" selection-start-column="47" selection-end-line="27" selection-end-column="47" />
           <folding />
         </state>
       </provider>
