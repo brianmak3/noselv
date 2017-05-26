@@ -44,7 +44,7 @@ module.exports = function(passport) {
                             newUser.last_name = req.body.last_name;
                             newUser.status = random_number;
                             newUser.email = req.body.email;
-                            newUser.profile_pic = 'images/bigAvatar.JPG';
+                            newUser.profile_pic = 'images/bigAvatar.jpg';
                             newUser.save(function (err) {
                                 if (err)
                                     throw err;
