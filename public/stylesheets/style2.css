@@ -35,6 +35,25 @@ a{
 .searchResltBtn:hover{
     background-color: gainsboro;
 }
+.searchResltBtn2{
+    border:none;
+   max-width:200%;
+    margin:2px;
+    font-size:11px;
+    font-weight:bold;
+    padding:5px;
+    text-align: left;
+    background-color: white;
+    margin-bottom:0px;
+}.searchResltBtn2:hover{
+    text-decoration: underline;
+ }
+ .comments{
+  font-size: 12px;
+  cursor:pointer;
+ }.comments:hover{
+       color: #000000;
+   }
 #profile_link,.friend_link{
     color: white;text-decoration: none; background-color:#000034;padding:10px;padding-left:30px;padding-right:30px;border-radius: 20px;
 }
@@ -128,7 +147,7 @@ a{
   .x_label:hover{
       color: red;
   }
-  #send_post{
+  #upload_btn{
       border:none;
       background-color: white;
       padding:10px;
@@ -137,6 +156,28 @@ a{
       margin-left:120px;
       cursor: pointer;
   }
-  #send_post:hover{
+  #upload_btn:hover{
       background-color: #DCDCDC;
+  }
+  #post_progress{
+        color:grey;
+        float: right;
+        margin-right:20px;
+        font-size: 18px;
+  }
+  #post_progress:hover{
+      color: white;
+      cursor: pointer;
+  }
+  .person_icon{
+      font-size:20px;
+      color:darkgray;
+  }
+  .person_icon:hover{
+      color: #000034;
+      cursor:pointer;
+  }
+  .persons_icon{
+      color: #000034;
+      cursor:pointer;
   }

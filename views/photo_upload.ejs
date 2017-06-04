@@ -7,21 +7,27 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js"></script>
     <script>
         $(document).ready(function(){
-            $('#post_form').submit(function() {
+            $('#uploadForm').submit(function() {
                 if (labels.length < 1) {
                     $('#labels_warning').show("easeOutBounce").text('You need at least 1 label.');
                     return false;
                 }else {
-                   // $("#status").empty().text("File is uploading...");
+                  $('#upload_status').show();
+                  $('#uploadForm').css('opacity','0.5');
                     $(this).ajaxSubmit({
-
+                        data: { labels: labels, date: Date.now() },
                         error: function (xhr) {
-                           // status('Error: ' + xhr.status);
+                           status('Error: ' + xhr.status);
                         },
 
                         success: function (response) {
-                         //   $("#status").empty().text(response);
-                            console.log(response);
+                            $('#send_mmsg, #image_load').hide();
+                            $('#response').show();
+                            $('#msg_div').css('backgroundColor', '#D0D0D0');
+                            $('.okay_close').click(function(){
+                            $('#upload_status').hide();
+                           $('#uploadForm').css('opacity','1');
+                            });
                         }
                     });
                     //Very important line, it disable the page refresh.
@@ -102,25 +108,26 @@
 </head>
 <body style="padding:0px; background-color: rgba(229,229,242, 0.9);">
 <% include headers/main_header.ejs %>
-<div class="fullheight" style="height: auto; overflow: hidden; overflow-y:auto; margin:0px;margin:0px;width:100%">
+<div class="fullheight" style="height: auto; margin:0px;margin:0px;width:100%">
     <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-1" style="height:auto; width:440px; margin-top:49px;">
+
         <div style="background-color: white; border-radius:2px; padding: 5px">
             <img src="<%= user.profile_pic%>" style="border-radius:2px;height:30px; width:30px;">
             <span style="font-weight: bold; color:#000034"><%= user.first_name +' '+ user.last_name %></span>
-            <span  style="font-weight: bold; color:grey; font-size:12px; float:right">Uploading new image.</span><br/>
-            <form id="post_form" enctype="multipart/form-data" action="uploaded_post" method="post">
+               <span  style="font-weight: bold; color:grey; font-size:12px; float:right">Uploading new image.</span><br/>
+            <form  id="uploadForm" enctype="multipart/form-data" action="/uploaded_post" method="post">
                 <div class="uploader" onclick="$('#filePhoto').click()">
                     <i style="color:#E0E0E0;position:relative;font-size:30px; top:70px;left:200px" class="fa fa-camera"></i><br/>
                     <span style="position:relative;font-size:30px; top:85px;padding:5px; color:#E0E0E0; left:65px; border:1px grey dashed">Drag your image here.</span>
                     <img src=""/>
-                    <input type="file" name="userPhoto"  id="filePhoto" />
+                    <input  name="userPhoto" class="update_file" type="file"  id="filePhoto" />
                     <div  style="margin-left:150px;margin-top:100px;display:inline-block;color: #000034; width:130px;padding:2px;border-radius:2px">Choose from pc <i class="fa fa-pencil"></i></div>
                 </div>
                 <div style="margin-top:5px">
                     <hr style="margin:10px; position:static"/>
                     <div style="margin:2px;background-color:#F8F8F8; padding:5px;"><br/>
                         <span style="font-weight: bold">Image description</span><br/>
-                        <textarea type="text" style="resize:none;width:280px;height:40px; font-size:13px;border:none; border-bottom: 1px solid #000034;" placeholder="Type your image caption or description..."></textarea>
+                        <textarea name="caption" type="text" style="resize:none;width:280px;height:40px; font-size:13px;border:none; border-bottom: 1px solid #000034;" placeholder="Type your image caption or description..."></textarea>
                     </div>
                     <div style="margin:2px;background-color:#F8F8F8; padding:5px;">
                         <span style="font-weight: bold">Add labels to picture</span><br/>
@@ -132,8 +139,8 @@
                     </div>
                     <div style="margin:2px;background-color:#F8F8F8; padding:5px;">
                         <span style="font-weight: bold">Location</span><br/>
-                        <input type="text" style="width:200px;height:30px; font-size:13px;border:none; border-bottom: 1px solid #000034;" placeholder="Type image location">
-                        <button  id="send_post" type="submit"  class="glyphicon glyphicon-send"></button>
+                        <input name="Location" type="text" style="width:200px;height:30px; font-size:13px;border:none; border-bottom: 1px solid #000034;" placeholder="Type image location">
+                        <button  type="submit"  id="upload_btn" name="submit"  class="glyphicon glyphicon-send"></button>
                     </div>
                 </div>
             </form>
@@ -142,6 +149,18 @@
     <div>
         <% include headers/chat_and_friends.ejs %>
     </div>
+
+</div>
+<div id= "upload_status" style="display:none;height:100%;width:100%; background-color: rgba(0,0,0,0.6);position:absolute;top:0px;left:0px">
+    <span id="post_progress"><i class="fa fa-close okay_close"></i></span>
+    <div id="msg_div" style="position:absolute;top:230px;height:100px;opacity:0.7" class="col-lg-offset-3 col-lg-7 col-md-offset-3 col-md-7 col-sm-offset-3 col-sm-7 col-xs-offset-3 col-xs-7">
+        <span id="send_mmsg" style="color: lightgrey">Uploading your post ...</span>
+        <br/>
+        <div id="response" class="col-lg-offset-3 col-md-offset-3 okay_close" style="display:none;color: #000034;font-weight:bold">Your post has been uploaded successifully !!!<br/>
+            <button style="box-shadow: 2px 1px 1px 2px white;margin-top:15px;margin-left:150px;border: none;border-radius:2px;color:white;background-color: #000034">OK</button>
+        </div>
+    </div>
+    <img id="image_load" class="col-lg-offset-3 col-lg-7 col-md-offset-3 col-md-7 col-sm-offset-3 col-sm-7 col-xs-offset-3 col-xs-7  " src="images/loading.GIF" style="display:none;position:absolute;top:250px;height:100px;opacity:0.7"/>
 </div>
 </body>
 </html>

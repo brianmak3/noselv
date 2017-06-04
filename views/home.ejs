@@ -2,26 +2,115 @@
 <html>
 <head>
     <% include headers/bootstrap_js.ejs %>
-</head>
-<body style="padding:0px; background-color: rgba(229,229,242, 0.9);">
-<% include headers/main_header.ejs %>
-<div class="fullheight" style="height: auto; overflow: hidden; overflow-y:auto; margin:0px;margin:0px">
+    <script>
+        $(document).ready(function(){
+            try{
+                var socket = io.connect('http://127.0.0.1:8080');
+            }catch(e){
+                // set status to warn
+            }
 
-    <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-1" style="display:noe;height:auto; width:440px; margin-top:49px;">
-        <div style="background-color: white; border-radius:2px; padding: 5px">
-            <img src="<%= user.profile_pic%>" style="border-radius:50%;height:45px; width:45px;">
-            <span style="font-weight: bold; color:#000034"><%= user.first_name +' '+ user.last_name %></span><span style="float:right; margin-right:5px">2h</span><br/>
-            <span  style="font-weight: bold; color:grey; font-size:12px;margin-left:30px;">
-                    <button style="border:none; border-radius:2px; background-color: #E8E8E8">Nature</button>
-                    <button style="border:none; border-radius:2px; background-color: #E8E8E8">Switzerland</button>
-                    <button style="border:none; border-radius:2px; background-color: #E8E8E8">Lakes</button>
-            </span><br/>
-            <img src="images/profile.jpg" style="height:260px; width:430px; border-radius: 3px; margin-top:4px" >
+            if(socket != '' && socket == 'undefined')
+            {
+                alert('Something is not okay');
+            }
+
+              $('.comment_input').keyup(function () {
+                   comment = jQuery.trim($(this).val());
+                   comment_on = $(this).attr('name');
+                   post_owner = $(this).attr('id');
+                   date = Date.now();
+                   image_id = $(this).attr('href');
+                   commented_by =$('#user_username').text();
+                   commented_by_name =$('#my_name').text();
+                   commented_by_picture =$('#user_image').attr('src');
+
+              });
+            $(document).keypress(function(e) {
+                if(e.which == 13) {
+                    socket.emit('comment_sent',{post_owner:post_owner,comment:comment,comment_on:comment_on,date:date,commented_by_picture:commented_by_picture,commented_by_name:commented_by_name,commented_by:commented_by, image_id:image_id});
+                }
+            });
+
+            $('.comments').click(function (e) {
+                $('.comments_div').slideUp(300);
+                var div_toggle = $(this).attr('value');
+                var post_check = $(this).attr('name');
+                socket.emit('fetch_comments',{comment_on:post_check,div_toggle:div_toggle});
+            });
+
+            socket.on('comments_found',function (data) {
+                var div_toggle = data.div_append;
+                $('#_div'+div_toggle+'').slideDown(300);
+                $('#app_'+div_toggle+'').html('');
+                data.results.reverse().forEach(function (result) {
+                    var date1 = new Date(parseInt(result.comments.date));
+                       date = date1.toDateString();
+                      var  today =new Date(Date.now());
+                         today = today.toDateString();
+                         if(today == date){
+                             date = 'Today @ '+moment(parseInt(result.comments.date, 10)).format('h:mm');;
+                         }
+                    $('#app_'+div_toggle+'').append('<div style="display:inline-block; width:360px;">  <form action="friend_profile" method="post"><button type="submit"  class="searchResltBtn2" name="username" value="'+ result.user_name+'" > <img style="height:35px;width:35px;border-radius: 50%;margin-right:3px" src="'+ result.profile_pic+'"/><span style=" font-family: Arial;">'+result.first_name +' '+ result.last_name +'</span></button></form><div style="margin-left:50px;font-size: 12px">'+result.comments.comment+'</div><div style="float: right"><span style="color:grey;float:right; margin-right:5px;font-size:9px">'+date+'</span></div></div><hr style="margin:3px; position:static"/>');
+                })
+            })
+            socket.on('comment_return',function (data) {
+                $('.comment_input').val('');
+                    var date1 = new Date(parseInt(data.comment_time));
+                date = date1.toDateString();
+                var  today =new Date(Date.now());
+                today = today.toDateString();
+                if(today == date){
+                    date = 'Today @ '+moment(parseInt(data.comment_time, 10)).format('h:mm');;
+                }
+                    var div_toggle = data.comme_div;
+
+                    $('#app_'+div_toggle+'').append('<div style="display:inline-block; width:360px;">  <form action="friend_profile" method="post"><button type="submit"  class="searchResltBtn2" name="username" value="'+ data.commented_by+'" > <img style="height:35px;width:35px;border-radius: 50%;margin-right:3px" src="'+ data.commented_by_picture+'"/><span style=" font-family: Arial;">'+data.commented_by_name+'</span></button></form><div style="margin-left:50px;font-size: 12px">'+data.comment+'</div><div style="float: right"><span style="color:grey;float:right; margin-right:5px;font-size:9px">'+date+'</span></div></div><hr style="margin:3px; position:static"/>');
+                  var num_cmmnts = parseInt($('#comment_'+div_toggle+'').text());
+                  if(jQuery.isNumeric(num_cmmnts)){
+                      $('#comment_'+div_toggle+'').text(num_cmmnts + 1);
+                  }
+
+            });
+        })
+    </script>
+</head>
+<body style="padding:0px; background-color: rgba(229,229,242, 0.9);overflow: hidden; overflow-y: auto">
+<% include headers/main_header.ejs %>
+<div class="fullheight" style="height: auto; ">
+
+    <% if(results_found.length>0){%>
+    <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-1" style="height:auto; width:440px; margin-top:49px">
+        <% results_found.forEach(function (result) {%>
+        <div style="background-color: white; border-radius:2px; padding: 5px; margin-top:5px">
+            <form action="friend_profile" method="post"><button type="submit"  class="searchResltBtn2" name="username" value="<%= result.user_name %>" >
+                    <img style="height:35px;width:35px;border-radius: 50%;margin-right:3px" src="<%= result.profile_pic%>"/>
+                    <span style=" font-family: Arial;"><%= result.first_name +' '+ result.last_name %></span>
+                </button>
+                <span style="color:grey;float:right; margin-right:5px;font-size:9px"><br/>
+                    <%
+                        var date1 = new Date(parseInt(result.post.date));
+                        date = date1.toDateString();
+                        var  today =new Date(Date.now());
+                        today = today.toDateString();
+                        if(today == date){
+                            date = 'Today @ '+ date1.toTimeString().substr(0,5);
+
+                        }
+                    %><%= date %></span>
+                <div  style="font-weight: bold; color:grey; font-size:12px;margin-left:60px;margin-top:-15px">
+                    <% result.post.Labels.forEach(function (label) {%>
+                    <span style="padding:3px;border:none; border-radius:2px; background-color: #E8E8E8"><%= label %></span>
+                    <% }) %>
+                </div>
+            </form>
+
+            <img src="<%= result.post.picture %>" style="height:260px; width:430px; border-radius: 3px; margin-top:4px" >
             <div style="margin-top:5px">
                 <div style="position:relative; margin-top:2px;margin-left:290px; ">
-                    <span class="fa-stack fa-xs" style="font-size: 12px">
-                       <i class="fa fa-comment-o fa-stack-2x"></i>
-                         <i class="fa fa-stack-1x">5</i>
+                    <span class="fa-stack fa-xs comments" name="<%= result.post.picture %>" value="<%= result.post.date %>">
+                       <i class="fa fa-comment-o fa-stack-2x" ></i>
+                         <i class="fa fa-stack-1x" style="font-size:9px" id="comment_<%= result.post.date %>"><%= result.post.comments %></i>
                     </span>
                     <span class="fa-stack fa-xs" style="font-size: 12px; margin-left:20px">
                        <i class="fa fa-heart-o fa-stack-2x"></i>
@@ -31,84 +120,34 @@
                       <i class="fa fa-user"></i>
                     </span>
                 </div>
-                <div style="font-family: Arial; font-size:13px">
-                    Sometimes we ought to be our own selves in oreder to succedd in this live.
-                    Otherwise if you depend on someone be sure something wrong is going to happen on the way and your
-                    are going to blame no one on that absolutely.
+                <div style="font-family: Arial; font-size:13px;padding:5px">
+                    <%= result.post.caption %>
                 </div>
                 <hr style="margin:0px; position:static"/>
-                <div style="margin:10px;display: none; ">
+                <div style="margin:10px;display: none;" class="comments_div" id="_div<%= result.post.date %>" >
                     <span style="font-weight: bold; color: #000034;font-size:14px">Comments</span><br/>
-                    <div style="margin-left:20px; height:200px; overflow: hidden;overflow-y: auto">
-                            <div style="display:inline-block; width:360px;">
-                                <img src="images/davi.jpg" style="height:50px; width:50px; border-radius: 50%;"/>
-                                <span style=" font-weight:bold; color: #000034; font-size:12px;">David Wayne</span><br/>
-                                <div style="margin-left:50px;font-size: 12px">Wow!! what a wonderful saying over there, i think i am going to weight my options
-                                againa and determine what i really want in life.</div>
-                                <div style="float: right"><span style="font-weight: bold">27</span><span style="color: grey"> min</span></div>
-                            </div>
-                        <hr style="margin:3px; position:static"/>
-                                <div style="display:inline-block; width:360px;">
-                                <img src="images/me.jpg" style="height:50px; width:50px; border-radius: 50%;"/>
-                                <span style=" font-weight:bold; color: #000034; font-size:12px">Gadafy Henry</span><br/>
-                                <div style="margin-left:50px;font-size: 12px">Wow!! what a wonderful saying over there, i think i am going to weight my options
-                                againa and determine what i really want in life.</div>
-                                <div style="float: right"><span style="font-weight: bold;float:right">15:30</span><br/>
-                                    <span style="color: grey"> 27:3:2017</span>
-                                </div>
-                            </div>
-                        <hr style="margin:3px; position:static"/>
-                                <div style="display:inline-block; width:360px;">
-                                <img src="images/nashon.jpg" style="height:50px; width:50px; border-radius: 50%;"/>
-                                <span style=" font-weight:bold; color: #000034; font-size:12px">Nahashon Mokua</span><br/>
-                                <div style="margin-left:50px;font-size: 12px">Wow!! what a wonderful saying over there, i think i am going to weight my options
-                                againa and determine what i really want in life.</div>
-                                <div style="float: right"><span style="font-weight: bold;float:right">15:30</span><br/>
-                                    <span style="color: grey"> 27:3:2017</span>
-                                </div>
-                            </div>
-
+                    <div id="app_<%= result.post.date %>" style="margin-left:20px;height:auto; max-height:200px; overflow: hidden;overflow-y: auto">
                     </div>
                 </div>
                 <div style="margin:10px;display: none; ">
                     <span style="font-weight: bold; color: #000034;font-size:14px">People who like this.</span><br/>
-                    <div style="margin-left:20px; height:200px; overflow: hidden;overflow-y: auto">
-                        <div style="display:inline-block; width:360px;">
-                            <img src="images/davi.jpg" style="height:50px; width:50px; border-radius: 50%;"/>
-                            <span style=" font-weight:bold; color: #000034; font-size:12px;">David Wayne</span>
-                            <div style="float: right"><span style="font-weight: bold">27</span><span style="color: grey"> min</span></div>
-                        </div>
-                        <hr style="margin:3px; position:static"/>
-                        <div style="display:inline-block; width:360px;">
-                            <img src="images/me.jpg" style="height:50px; width:50px; border-radius: 50%;"/>
-                            <span style=" font-weight:bold; color: #000034; font-size:12px">Gadafy Henry</span>
-                            <div style="float: right"><span style="font-weight: bold;float:right">15:30</span><br/>
-                                <span style="color: grey"> 27:3:2017</span>
-                            </div>
-                        </div>
-                        <hr style="margin:3px; position:static"/>
-                        <div style="display:inline-block; width:360px;">
-                            <img src="images/nashon.jpg" style="height:50px; width:50px; border-radius: 50%;"/>
-                            <span style=" font-weight:bold; color: #000034; font-size:12px">Nahashon Mokua</span>
-                            <div style="float: right"><span style="font-weight: bold;float:right">15:30</span><br/>
-                                <span style="color: grey"> 27:3:2017</span>
-                            </div>
-                        </div>
 
-                    </div>
                 </div>
                 <hr style="margin:0px; position:static"/>
                 <div style="margin:2px;background-color:#F8F8F8; padding:5px;">
                     <img src="<%= user.profile_pic%>" style="border-radius:2px; height:30px; width:30px;">
-                    <input type="text" style="width:380px;height:30px; font-size:13px;border:none; border-bottom: 1px solid #000034;" placeholder="Type your comment...">
+                    <input  class="comment_input" id="<%= result.user_name %>" href="<%=result.post.date%>" name="<%=result.post.picture%>" type="text" style="width:380px;height:30px; font-size:13px;border:none; border-bottom: 1px solid lightgrey;" placeholder="Type your comment...">
                 </div>
             </div>
         </div>
+        <%})%>
     </div>
+    <%}else{%>
+
     <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-1" style="height:auto; width:440px; margin-top:49px;">
         <div style="background-color: white; border-radius:2px; padding: 5px">
             <img src="<%= user.profile_pic%>" style="border-radius:50%;height:45px; width:45px;">
-            <span style="font-weight: bold; color:#000034"><%= user.first_name +' '+ user.last_name %></span><br/>
+            <span id="my_name" style="font-weight: bold; color:#000034"><%= user.first_name +' '+ user.last_name %></span><br/>
             <span  style="font-weight: bold; color:grey; font-size:12px;margin-left:50px;">
                    Welcome to noSelve <%= user.first_name +' '+ user.last_name %>.
             </span><br/>
@@ -129,6 +168,7 @@
             </div>
         </div>
     </div>
+    <%}%>
     <div>
         <% include headers/chat_and_friends.ejs %>
     </div>

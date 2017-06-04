@@ -89,6 +89,22 @@
             });
 
 
+            $('.person_icon').click(function () {
+                $('.person_icon').removeClass('persons_icon');
+                $(this).addClass('persons_icon');
+                var id_clicked = $(this).attr('id');
+                if(id_clicked == 'show_images' ){
+                    $('#display_images_randomly').show();
+                    $('#show_feeds,#display_images_order').hide();
+                }else if(id_clicked == 'show_feeds_icon' ){
+                    $('#display_images_randomly,#display_images_order').hide();
+                    $('#show_feeds').show();
+                }else if(id_clicked == 'images_order'){
+                    $('#display_images_randomly,#show_feeds').hide();
+                    $('#display_images_order').show();
+                }
+            })
+
         });
     </script>
 </head>
@@ -152,18 +168,134 @@
             </div>
             <hr style="margin:15px;border-color: #D0D0D0"/>
             <div>
-                <i class="fa fa-picture-o col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-offset-2" style="font-size:20px;color:darkgray"></i>
-                <i class="fa fa-bars col-lg-offset-3 col-md-offset-3 col-sm-offset-3 col-xs-offset-3" style="font-size:20px;color:darkgray"></i>
-                <i class="fa fa-map-marker col-lg-offset-3 col-md-offset-3 col-sm-offset-3 col-xs-offset-3"  style="font-size:20px;color:darkgray"></i>
-            </div>
+                <i id="show_images" class="fa fa-picture-o col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-offset-2 person_icon persons_icon" ></i>
+                <i id="show_feeds_icon" class="fa fa-bars col-lg-offset-3 col-md-offset-3 col-sm-offset-3 col-xs-offset-3 person_icon" ></i>
+                <i id="images_order" class="fa fa-map-marker col-lg-offset-3 col-md-offset-3 col-sm-offset-3 col-xs-offset-3 person_icon" ></i>
+            </div>   </div>
+            <div id="display_images_randomly" style="background-color: white;margin-top:5px;padding:3px">
             <span style="font-weight: bold; color:#000034; "> <i style="font-size:15px;" class="fa fa-file-image-o"></i> Photos</span><br/>
             <div style="max-height:300px; overflow: hidden; overflow-y: auto">
-                <% for(i=0; i<=20; i++){%>
-                <img src="images/profile.jpg" style="margin-bottom:1px;height:133px; width:133px;">
-                <%}%>
+                <% frndDetails.post.forEach(function (image) {%>
+                <img src="<%= image.picture %>" style="margin-bottom:1px;height:133px; width:133px;">
+               <% }) %>
+            </div></div>
+                <div id="display_images_order" style="background-color: white;margin-top:5px;padding:3px;display:none">
+                    <span style="font-weight: bold; color:#000034; "> <i style="font-size:15px;" class="fa fa-file-image-o"></i> Photos</span><br/>
+                    <div style="max-height:300px; overflow: hidden; overflow-y: auto">
+                        <% frndDetails.post.reverse().forEach(function (image) {%>
+                        <img src="<%= image.picture %>" style="margin-bottom:1px;height:133px; width:133px;">
+                        <% }) %>
+                    </div>
+              </div>
 
+
+
+
+            <div id="show_feeds" style="display:none;height:auto;  margin-top:5px;">
+                <% frndDetails.post.forEach(function (image) {%>
+                <div style="background-color: white; border-radius:2px; padding: 5px; margin-top:5px">
+                    <img src="<%= user.profile_pic%>" style="border-radius:50%;height:45px; width:45px;">
+                    <span style="font-weight: bold; color:#000034"><%= frndDetails.first_name +' '+ frndDetails.last_name %></span><span style="float:right; margin-right:5px">2h</span><br/>
+                    <span  style="font-weight: bold; color:grey; font-size:12px;margin-left:30px;">
+                        <% image.Labels.forEach(function (label) {%>
+                        <span style="padding:3px;border:none; border-radius:2px; background-color: #E8E8E8"><%= label %></span>
+                       <% }) %>
+
+            </span><br/>
+                    <img src="<%= image.picture %>" style="height:260px; width:430px; border-radius: 3px; margin-top:4px" >
+                    <div style="margin-top:5px">
+                        <div style="position:relative; margin-top:2px;margin-left:290px; ">
+                    <span class="fa-stack fa-xs" style="font-size: 12px">
+                       <i class="fa fa-comment-o fa-stack-2x"></i>
+                         <i class="fa fa-stack-1x">5</i>
+                    </span>
+                            <span class="fa-stack fa-xs" style="font-size: 12px; margin-left:20px">
+                       <i class="fa fa-heart-o fa-stack-2x"></i>
+                         <i class="fa fa-stack-1x">2</i>
+                    </span>
+                            <span class="fa-stack fa-xs" style="font-size: 20px;padding:0px; margin-left:20px">
+                      <i class="fa fa-user"></i>
+                    </span>
+                        </div>
+                        <div style="font-family: Arial; font-size:13px">
+                           <%= image.caption %>
+                        </div>
+                        <hr style="margin:0px; position:static"/>
+                        <div style="margin:10px;display: none; ">
+                            <span style="font-weight: bold; color: #000034;font-size:14px">Comments</span><br/>
+                            <div style="margin-left:20px; height:200px; overflow: hidden;overflow-y: auto">
+                                <div style="display:inline-block; width:360px;">
+                                    <img src="images/davi.jpg" style="height:50px; width:50px; border-radius: 50%;"/>
+                                    <span style=" font-weight:bold; color: #000034; font-size:12px;">David Wayne</span><br/>
+                                    <div style="margin-left:50px;font-size: 12px">Wow!! what a wonderful saying over there, i think i am going to weight my options
+                                        againa and determine what i really want in life.</div>
+                                    <div style="float: right"><span style="font-weight: bold">27</span><span style="color: grey"> min</span></div>
+                                </div>
+                                <hr style="margin:3px; position:static"/>
+                                <div style="display:inline-block; width:360px;">
+                                    <img src="images/me.jpg" style="height:50px; width:50px; border-radius: 50%;"/>
+                                    <span style=" font-weight:bold; color: #000034; font-size:12px">Gadafy Henry</span><br/>
+                                    <div style="margin-left:50px;font-size: 12px">Wow!! what a wonderful saying over there, i think i am going to weight my options
+                                        againa and determine what i really want in life.</div>
+                                    <div style="float: right"><span style="font-weight: bold;float:right">15:30</span><br/>
+                                        <span style="color: grey"> 27:3:2017</span>
+                                    </div>
+                                </div>
+                                <hr style="margin:3px; position:static"/>
+                                <div style="display:inline-block; width:360px;">
+                                    <img src="images/nashon.jpg" style="height:50px; width:50px; border-radius: 50%;"/>
+                                    <span style=" font-weight:bold; color: #000034; font-size:12px">Nahashon Mokua</span><br/>
+                                    <div style="margin-left:50px;font-size: 12px">Wow!! what a wonderful saying over there, i think i am going to weight my options
+                                        againa and determine what i really want in life.</div>
+                                    <div style="float: right"><span style="font-weight: bold;float:right">15:30</span><br/>
+                                        <span style="color: grey"> 27:3:2017</span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div style="margin:10px;display: none; ">
+                            <span style="font-weight: bold; color: #000034;font-size:14px">People who like this.</span><br/>
+                            <div style="margin-left:20px; height:200px; overflow: hidden;overflow-y: auto">
+                                <div style="display:inline-block; width:360px;">
+                                    <img src="images/davi.jpg" style="height:50px; width:50px; border-radius: 50%;"/>
+                                    <span style=" font-weight:bold; color: #000034; font-size:12px;">David Wayne</span>
+                                    <div style="float: right"><span style="font-weight: bold">27</span><span style="color: grey"> min</span></div>
+                                </div>
+                                <hr style="margin:3px; position:static"/>
+                                <div style="display:inline-block; width:360px;">
+                                    <img src="images/me.jpg" style="height:50px; width:50px; border-radius: 50%;"/>
+                                    <span style=" font-weight:bold; color: #000034; font-size:12px">Gadafy Henry</span>
+                                    <div style="float: right"><span style="font-weight: bold;float:right">15:30</span><br/>
+                                        <span style="color: grey"> 27:3:2017</span>
+                                    </div>
+                                </div>
+                                <hr style="margin:3px; position:static"/>
+                                <div style="display:inline-block; width:360px;">
+                                    <img src="images/nashon.jpg" style="height:50px; width:50px; border-radius: 50%;"/>
+                                    <span style=" font-weight:bold; color: #000034; font-size:12px">Nahashon Mokua</span>
+                                    <div style="float: right"><span style="font-weight: bold;float:right">15:30</span><br/>
+                                        <span style="color: grey"> 27:3:2017</span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <hr style="margin:0px; position:static"/>
+                        <div style="margin:2px;background-color:#F8F8F8; padding:5px;">
+                            <img src="<%= user.profile_pic%>" style="border-radius:2px; height:30px; width:30px;">
+                            <input type="text" style="width:380px;height:30px; font-size:13px;border:none; border-bottom: 1px solid lightgrey;" placeholder="Type your comment...">
+                        </div>
+                    </div>
+                </div>
+                <% }) %>
             </div>
-        </div>
+
+
+
+
+
+
     </div>
     <br/><br/>
     <div>

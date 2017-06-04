@@ -12,6 +12,24 @@ var userSchema = new mongoose.Schema({
         followings :Array,
         followeds :Array,
         password: {type:String,require:true},
+        post:[{
+                picture: String,
+                date: String,
+                Labels: Array,
+                caption: String,
+                location: String,
+                state: String,
+                comments: Number,
+                likes:Array,
+
+        }],
+    comments:[{
+                picture: String,
+                date: String,
+               comment: String,
+               image_id: String
+        }],
+
         token: {type:String},
         status:{type:String,require:true},
         date_joined: {type:String,require:true},

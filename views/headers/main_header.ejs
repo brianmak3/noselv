@@ -1,7 +1,7 @@
 
 <div style="background-color: #000034; width:100%; position:fixed;top:-8px">
     <div class="col-lg-offset-2 col-sm-offset-1 col-md-offset-2 " style="width:300px; display:inline-block">
-        <a href="/profile" title="profile"> <img  src="<%= user.profile_pic%>" style="cursor:pointer; height:38px; width:38px; border-radius:50%; margin-left:5px; margin-top:2px; margin-bottom:2px;"></a>
+        <a href="/profile" title="profile"> <img id="user_image" src="<%= user.profile_pic%>" style="cursor:pointer; height:38px; width:38px; border-radius:50%; margin-left:5px; margin-top:2px; margin-bottom:2px;"></a>
         <span  id="user_username" style="display: none"><%= user.user_name %></span>
         <a href="/home"  title="Home" class="glyphicon glyphicon-home menu_icons" style="font-size: 25px; position:relative; top:8px; left:30px;"></a>
         <a title="favourite" class="glyphicon glyphicon-star menu_icons" style="font-size: 25px; position:relative; top:8px; left:70px;"></a>

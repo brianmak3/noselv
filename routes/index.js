@@ -134,6 +134,52 @@ module.exports = function (app, passport) {
                     throw err;
               socket.emit('random_friends',users_found);
             });
+        });
+
+
+
+        //getting a comment and storing it
+        socket.on('comment_sent',function (data) {
+            console.log(data.post_owner+' '+data.comment_on);
+            User.update({'user_name':data.post_owner,'post.picture':data.comment_on},
+
+            {
+               // $push: {'post.$.likes':data.commented_by},
+                $inc:{'post.$.comments':1}
+            }
+            ,function (err) {
+                    if(err)
+                        throw err;
+                });
+
+            User.update({'user_name':data.commented_by},{
+                $push:{
+                    "comments":{"picture":data.comment_on, "date":data.date, "comment":data.comment,"image_id":data.image_id}
+                }},function(err){
+                if(err){
+                    throw err;
+                }else{
+                   socket.emit('comment_return',{comme_div: data.image_id,commented_by:data.commented_by,commented_by_name:data.commented_by_name ,commented_by_picture:data.commented_by_picture,comment:data.comment,comment_time:data.date});
+                   socket.broadcast.emit('comment_return',{comme_div: data.image_id,commented_by:data.commented_by,commented_by_name:data.commented_by_name ,commented_by_picture:data.commented_by_picture,comment:data.comment,comment_time:data.date});
+                }
+             })
+        });
+        //fetching comments from database
+        socket.on('fetch_comments',function (data) {
+            var picture = data.comment_on;
+            var pic_id = data.div_toggle;
+            User.aggregate([
+                {$unwind:"$comments"},
+                {$match : {'comments.picture': picture, 'comments.image_id':pic_id}},
+                {$sort:
+                    {'comments.date':-1}
+                }]).exec(function (err, results) {
+                if(err)
+                    throw err;
+                if(results.length>0) {
+                    socket.emit('comments_found', {results: results,div_append:pic_id});
+                }
+            })
         })
     });
 
@@ -217,24 +263,25 @@ module.exports = function (app, passport) {
 
         });
     });
-    app.post('uploaded_post',function(req,res){
+    app.post('/uploaded_post',function(req,res){
         upload(req,res,function(err) {
             if(err) {
                 console.log(err);
                 return res.end("Error uploading file.");
             }
           var profile_pic_url = 'images/'+req.file.filename;
-            res.send(profile_pic_url);
-          // var   username = req.user.user_name;
-        /* User.update({'user_name':username},{$set:{'profile_pic':profile_pic_url}},function(err){
+            var labels = req.body.labels;
+            var   username = req.user.user_name;
+         User.update({'user_name':username},{
+             $push:{
+                    "post":{"picture":profile_pic_url, "date":req.body.date, "caption":req.body.caption, "location":req.body.Location, "Labels": labels, "state": 'present', "comments": 0}
+             }},function(err){
              if(err){
                  throw err;
              }else{
-
-                         res.redirect('/profile');
-
+                       res.send('okay');
              }
-         });*/
+         });
 
 
         });
@@ -259,11 +306,19 @@ module.exports = function (app, passport) {
             User.aggregate([ {$match : {'followeds': {$ne:[current_user]}}}, {$sample : {size : 20 }} ]).exec(function (err, users_found) {
                 if(err)
                     throw err;
-                res.render('home.ejs', {
-                    title: 'NO SELV',
-                    user: req.user,
-                    users_found: users_found
-                })
+                   User.aggregate([
+                        {$match : { $or: [{'user_name': current_user}, {'followeds': {$in:[current_user]}}]}},
+                        {$unwind:"$post"},
+                        { $sort: {'post.date': -1}}]).exec(function (err, results_found) {
+                        if(err)
+                            throw err;
+                        res.render('home',{
+                            title: 'NO SELV',
+                            user: req.user,
+                            users_found: users_found,
+                            results_found: results_found
+                        });
+                    });
             });
 
         });
